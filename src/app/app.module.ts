@@ -9,6 +9,11 @@ import {MediaItemListComponent} from './media-item-list.component';
 import  { MediaItemFormComponent} from './media-item-form.component';
 import {FavoriteDirective} from './favorite.directive';
 import {CategoryList} from './category-list.pipe';
+import {MediaItemService} from './media-item.service';
+
+var lookUpLists = {
+  mediums : ['Movies','Series']
+}
 
 @NgModule({
   declarations: [
@@ -21,7 +26,8 @@ import {CategoryList} from './category-list.pipe';
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [],
+
+  providers: [MediaItemService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

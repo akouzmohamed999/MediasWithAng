@@ -12,7 +12,8 @@
         </li>
         <li>
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" required [formControl]="form.controls['name']">
+            <input type="text" name="name" id="name" required [formControl]="form.controls['name']" #name="ngForm">
+            <div *ngIf="name.errors?.pettern" class="error">name has errors</div>
         </li>
         <li>
             <label for="category">Category</label>
@@ -27,7 +28,11 @@
         </li>
         <li>
             <label for="year">Year</label>
-            <input type="text" name="year" id="year" maxlength="4" [formControl]="form.controls['year']">
+            <input type="text" name="year" id="year" maxlength="4" [formControl]="form.controls['year']"
+            #year="ngForm">
+                <div *ngIf="year.errors?.year" class="error">must be between {{year.errors?.year.min}}
+                    and {{year.errors?.year.max}}
+                </div>
         </li>
     </ul>
     <button [disabled]="!form.valid" type="submit">Save</button>
