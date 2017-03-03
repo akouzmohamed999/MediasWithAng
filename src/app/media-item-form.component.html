@@ -5,18 +5,18 @@
     <ul>
         <li>
             <label for="medium">Medium</label>
-            <select name="medium" id="medium" required ngControl="medium">
+            <select name="medium" id="medium" required formControlName="medium">
                 <option value="Movies">Movies</option>
                 <option value="Series">Series</option>
             </select>
         </li>
         <li>
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" required ngControl="name">
+            <input type="text" name="name" id="name" required formControlName="name">
         </li>
         <li>
             <label for="category">Category</label>
-            <select name="category" id="category" ngControl="category">
+            <select name="category" id="category" formControlName="category">
                 <option value="Action">Action</option>
                 <option value="Science Fiction">Science Fiction</option>
                 <option value="Comedy">Comedy</option>
@@ -27,7 +27,7 @@
         </li>
         <li>
             <label for="year">Year</label>
-            <input type="text" name="year" id="year" maxlength="4" ngControl="year">
+            <input type="text" name="year" id="year" maxlength="4" formControlName="year">
         </li>
     </ul>
     <button type="submit">Save</button>
