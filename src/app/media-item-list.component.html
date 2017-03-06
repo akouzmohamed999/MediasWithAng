@@ -1,4 +1,4 @@
-    <div>{{ mediaItems | categoryList }}</div>
+<div *ngIf="mediaItems">{{ mediaItems | categoryList }}</div>
 <section>   
     <media-item
     *ngFor="let media of mediaItems"
