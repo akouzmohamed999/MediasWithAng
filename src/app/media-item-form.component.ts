@@ -1,7 +1,8 @@
 
-import {Component} from '@angular/core';
+import {Component,Inject} from '@angular/core';
 import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 import {MediaItemService} from './media-item.service';
+import {LOOKUP_LISTS } from './providers';
 @Component({
 selector :'media-item-form',
 templateUrl : './media-item-form.component.html',
@@ -11,7 +12,7 @@ export class MediaItemFormComponent{
 
     form : FormGroup;
 
-    constructor(fb : FormBuilder,private mediaItemSerice : MediaItemService){
+    constructor(fb : FormBuilder,@Inject(LOOKUP_LISTS) public lookupLists){
         this.form = fb.group({
             'medium' : ['movies'],
             'name'  : ['',Validators.compose([
@@ -33,6 +34,6 @@ export class MediaItemFormComponent{
     }
 
     onSubmit(mediaItem){
-        this.mediaItemSerice.addMediaItem(mediaItem);
+      //  this.mediaItemSerice.addMediaItem(mediaItem);
     }
 }
