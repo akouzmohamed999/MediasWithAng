@@ -1,53 +1,22 @@
+import {Injectable} from '@angular/core';
+import {Http,Headers} from '@angular/http';
+import {HttpModule} from '@angular/http';
+import {MediaItem} from './media-item.interface';
+import {Observable} from 'rxjs';
 
-
+@Injectable()
 export class MediaItemService{
-    mediaItems = [
-        {
-            id: 1,
-            name: "Firebug",
-            medium: "Series",
-            category: "Science Fiction",
-            year: 2010,
-            watchedOn: 1294166565384,
-            isFavorite: false
-        },
-        {
-            id: 2,
-            name: "The Small Tall",
-            medium: "Movies",
-            category: "Comedy",
-            year: 2015,
-            watchedOn: null,
-            isFavorite: true
-        }, {
-            id: 3,
-            name: "The Redemption",
-            medium: "Movies",
-            category: "Action",
-            year: 2016,
-            watchedOn: null,
-            isFavorite: false
-        }, {
-            id: 4,
-            name: "Hoopers",
-            medium: "Series",
-            category: "Drama",
-            year: null,
-            watchedOn: null,
-            isFavorite: true
-        }, {
-            id: 5,
-            name: "Cheery Road",
-            medium: "Movies",
-            category: "Action",
-            year: 2015,
-            watchedOn: 1457166565384,
-            isFavorite: false
-        }
-    ];
 
+    private headers = new Headers();
+    constructor(private http:Http){}
 
-    getMediaItem(){
+    get():Observable<any>{
+         this.headers.append("Access-Control-Allow-Origin", '*');
+        this.headers.append("Access-Control-Allow-Methods", 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+        return this.http.get('http://localhost:8080/item/mediaitems')
+        .map(response => response.json());
+    }
+   /* getMediaItem(){
         return this.mediaItems;
     }
     
@@ -60,5 +29,5 @@ export class MediaItemService{
         if(index >= 0){
             this.mediaItems.splice(index,1);
         }
-    }
+    }*/
 }
