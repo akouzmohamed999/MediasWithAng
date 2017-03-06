@@ -13,7 +13,13 @@ mediaItems : MediaItem;
 constructor(private mediaItemService : MediaItemService){}
 
 ngOnInit(){
- this.mediaItemService.get().subscribe(mediaItems => {
+ this.getMediaItems();
+}
+onMediaItemDelete(mediaItem){
+    this.mediaItemService.deleteMediaItem(mediaItem).subscribe(()=>{this.getMediaItems()});
+}
+getMediaItems(){
+return this.mediaItemService.get().subscribe(mediaItems => {
             this.mediaItems =mediaItems},
              err => console.error(err), 
             ()=>console.log('Finished !!')
