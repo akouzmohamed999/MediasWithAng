@@ -1,19 +1,18 @@
-import {Pipe} from '@angular/core';
+import {Pipe,PipeTransform} from '@angular/core';
 
 @Pipe({
     name : 'categoryList'
 })
 
-export class CategoryList{
+export class CategoryList implements PipeTransform{
     
     transform(mediaItems){
         var categories =  [];
-        
-        mediaItems.forEach(mediaItem => {
-            if(categories.indexOf(mediaItem.category) <= -1){
-                categories.push(mediaItem.category);
+        mediaItems.forEach(media => {
+            if(categories.indexOf(media.category) <= -1){
+                categories.push(media.category);
             }
         });
-        return categories.join('/ ');
+        return categories.join(', ');
     }
 }
