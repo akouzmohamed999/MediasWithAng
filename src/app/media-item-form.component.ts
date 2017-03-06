@@ -12,7 +12,7 @@ export class MediaItemFormComponent{
 
     form : FormGroup;
 
-    constructor(fb : FormBuilder,@Inject(LOOKUP_LISTS) public lookupLists){
+    constructor(fb : FormBuilder,@Inject(LOOKUP_LISTS) public lookupLists, private mediaItemService : MediaItemService){
         this.form = fb.group({
             'medium' : ['movies'],
             'name'  : ['',Validators.compose([
@@ -34,6 +34,6 @@ export class MediaItemFormComponent{
     }
 
     onSubmit(mediaItem){
-      //  this.mediaItemSerice.addMediaItem(mediaItem);
+       this.mediaItemService.addMediaItem(mediaItem);
     }
 }
