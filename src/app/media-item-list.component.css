@@ -28,13 +28,11 @@ section {
 section > media-item {
     margin: 10px;
 }
-
 footer {
     text-align: right;
 }
-
-footer.icon {
+footer .icon {
     width: 64px;
     height: 64px;
     margin: 15px;
-}   
+}

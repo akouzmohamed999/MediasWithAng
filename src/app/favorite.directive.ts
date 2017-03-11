@@ -1,13 +1,12 @@
-import {Directive,HostBinding,HostListener,Input} from '@angular/core';
+import {Directive,HostBinding,HostListener,Input,EventEmitter,Output} from '@angular/core';
 
 @Directive({
     selector : '[mwFavorite]'
 })
 
 export class FavoriteDirective{
-
-
-@HostBinding('class.is-favorite') isFavorite = true;
+@Output('favoriteChange') favoritechange = new EventEmitter();
+@HostBinding('class.is-favorite') isFavorite = false;
 @Input()
     set mwFavorite(value){
         this.isFavorite=value;
@@ -21,4 +20,11 @@ export class FavoriteDirective{
     favoriteHovering(){
         this.isHovering = false;
     }
+
+@HostListener('click')
+    favoriteChange(){
+        this.favoritechange.emit();
+        console.log('favorite clicked')
+    }
+
 }

@@ -8,9 +8,15 @@ import { Observable } from 'rxjs';
 export class MediaItemService {
     constructor(private http: Http) { }
 
-    get(): Observable<any> {
-        return this.http.get('http://localhost:8080/item/mediaitems')
+    get(medium): Observable<any> {
+        if(medium == ''){
+            return this.http.get('http://localhost:8080/item/mediaitems')
             .map(response => response.json());
+        }else{
+            return this.http.get(`http://localhost:8080/item/mediaitembymedium?medium=${medium}`)
+            .map(response => response.json());
+        }
+        
     }
 
 
@@ -20,9 +26,16 @@ export class MediaItemService {
         JSON.stringify(mediaItem),{headers:headers})
         .map(response => {});
     }
-
-        deleteMediaItem(mediaItem) {
+    
+     deleteMediaItem(mediaItem) {
             return this.http.delete(`http://localhost:8080/item/delete?id=${mediaItem.id}`)
             .map(response =>{});
-        }
+    }
+
+    changeFavorite(mediaItem){
+             return this.http.delete(`http://localhost:8080/item/changefavorite?id=${mediaItem.id}`)
+            .map(response =>{});    
+    }
+
+
     }

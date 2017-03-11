@@ -10,16 +10,24 @@ import {MediaItem} from './media-item.interface';
 })
 export class MediaItemListComponent{
 mediaItems : MediaItem;
+medium ='';
 constructor(private mediaItemService : MediaItemService){}
 
 ngOnInit(){
- this.getMediaItems();
+ this.getMediaItems(this.medium);
 }
 onMediaItemDelete(mediaItem){
-    this.mediaItemService.deleteMediaItem(mediaItem).subscribe(()=>{this.getMediaItems()});
+    this.mediaItemService.deleteMediaItem(mediaItem).subscribe(()=>{this.getMediaItems(this.medium)});
 }
-getMediaItems(){
-return this.mediaItemService.get().subscribe(mediaItems => {
+
+onFavoriteChange(mediaItem){
+    console.log('click receinved on list');
+    this.mediaItemService.changeFavorite(mediaItem).subscribe(()=>{this.getMediaItems(this.medium)});
+}
+
+getMediaItems(medium){
+    this.medium=medium;
+return this.mediaItemService.get(medium).subscribe(mediaItems => {
             this.mediaItems =mediaItems},
              err => console.error(err), 
             ()=>console.log('Finished !!')
