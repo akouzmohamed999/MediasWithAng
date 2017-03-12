@@ -3,6 +3,12 @@
         <h1>Media Watch List</h1>
         <p class="description">Keeping track of the media I want to watch.</p>
     </header>
-    <media-item-form></media-item-form>
-    <media-item-list (test)="onTest()"></media-item-list>
+    <nav>
+        <a>Navigation:</a>
+        <ul>
+        <li><a [routerLink]="['form']">Add a new Element</a></li>
+        <li><a [routerLink]="['list']">listing ur series and movies</a></li>
+        </ul>
+    </nav>
+<router-outlet></router-outlet>
 </section>

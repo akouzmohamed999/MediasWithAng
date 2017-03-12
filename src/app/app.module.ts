@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { HttpModule} from '@angular/http';
+import {RouterModule,Routes} from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
@@ -17,6 +18,12 @@ import {ValuesPipe} from './display.pipe';
 import {MediaItemService} from './media-item.service';
 import {LOOKUP_LISTS,lookupList} from './providers';
 
+
+const routes  : Routes = [
+  { path:'form',component :MediaItemFormComponent},
+  { path:'list',component :MediaItemListComponent}
+];
+
 @NgModule({
   declarations: [
     AppComponent,MediaItemComponent,MediaItemListComponent
@@ -27,6 +34,7 @@ import {LOOKUP_LISTS,lookupList} from './providers';
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
 
   providers: [MediaItemService,{provide: LOOKUP_LISTS, useValue:lookupList }],

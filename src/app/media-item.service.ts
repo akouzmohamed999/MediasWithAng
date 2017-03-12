@@ -22,7 +22,7 @@ export class MediaItemService {
 
     addMediaItem(mediaItem) {
         var headers =  new Headers({'Content-Type':'application/json'});
-        return this.http.post('http://localhost:8080/item/mediaitems/add',
+        return this.http.post('http://localhost:8080/item/add',
         JSON.stringify(mediaItem),{headers:headers})
         .map(response => {});
     }
